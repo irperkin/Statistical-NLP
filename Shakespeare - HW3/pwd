@@ -1,0 +1,16 @@
+Script started on Tue 07 Nov 2017 11:06:49 PM CST
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt love twitteris[Kto sleepbe or not to beall the world is a stage
+log probability = -4.05809
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt all the world is a stage[12Plove twitteris[Kto sleepbe or not to be
+log probability = -6.68971
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt to be or not to beall the world is a stage[6Pto be or not to be[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kastronaut internet telephone
+log probability = 0
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt astronaut internet telephone[10Pto be or not to beall the world is a stage[12Plove twitteris[Kto sleep
+to sleep in niggarding pity the sonnets by william shakespeare
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt to sleepastronaut internet telephone[10Pto be or not to beall the world is a stage[12Plove twitteris[K
+love is the sonnets by william shakespeare from fairest creatures
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt love isto sleepastronaut internet telephone[10Pto be or not to beall the world is a stage[12Plove twitter
+love twitter
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ exit
+
+Script done on Tue 07 Nov 2017 11:07:35 PM CST

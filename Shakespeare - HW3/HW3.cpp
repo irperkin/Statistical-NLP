@@ -78,8 +78,8 @@ void logProbability(BigramMap bm, list<string> words) {
 	cout << "log probability = " << (long double)answer << endl;
 }
 
-void shannonVisualization(BigramMap bm, string fw, string sw) {
-
+bool greaterThan(const tuple<string, string, int, long double> tup1, const tuple<string, string, int, long double> tup2) {
+	return (get<2>(tup1) < get<3>(tup2));
 }
 
 void printBigramMap(BigramMap bm) {
@@ -88,6 +88,23 @@ void printBigramMap(BigramMap bm) {
 			cout << get<0>(*listIter) << " " << get<1>(*listIter) << " frequency = " << get<2>(*listIter) << " probability = " << get<3>(*listIter) << endl;
 		}
 	}
+}
+
+void shannonVisualization(BigramMap bm, string fw, string sw) {
+	BigramMap::iterator bIter;
+	string sentence = fw + " " + sw;
+
+	for(int i = 0; i < 8; i++) {
+		bIter = bm.find(sw);
+		if(bIter != bm.end()) {
+			bIter->second.sort(greaterThan);
+			sentence = sentence + " " + get<1>(bIter->second.front());
+		} else {
+			break;
+		}
+		sw = get<1>(bIter->second.front());
+	}
+	cout << sentence << endl;
 }
 
 int main(int argc, char * argv[]) {

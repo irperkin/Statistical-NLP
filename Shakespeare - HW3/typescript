@@ -1,0 +1,16 @@
+Script started on Tue 07 Nov 2017 11:13:07 PM CST
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt all the world is a stage
+log probability = -4.05809
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt to be or not to be
+log probability = -6.68971
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt astronaut internet telephone
+log probability = 0
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt to sleep
+to sleep in niggarding pity the sonnets by william shakespeare
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt love is
+love is the sonnets by william shakespeare from fairest creatures
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ ./a.out Shakespeare.txt love twittrer
+love twitter
+]0;irperkin@turing: ~/SNLP/HW3irperkin@turing:~/SNLP/HW3$ exit
+
+Script done on Tue 07 Nov 2017 11:15:12 PM CST
