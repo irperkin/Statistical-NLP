@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <tuple>
 #include <list>
+#include <math.h>
 
 using namespace std;
 #define BigramList list<tuple<string, string, int, float> >
@@ -10,34 +11,34 @@ using namespace std;
 #define UnigramMap unordered_map<string, int>
 
 // Using c++11
-// TO COMPILE: g++ -std=c++11 main.cpp
+// TO COMPILE: g++ -std=c++11 HW3.cpp
 
 void mapInit(string inputFile, BigramMap& bigramMap, UnigramMap& unigramMap) {
 	ifstream iStream(inputFile.c_str());
 	string firstWord, secondWord;
-	BigramMap::iterator bigramIter, bigramIter2;
+	BigramMap::iterator bigramIter;
 	BigramList::iterator listIter;
-	tuple<string, string, int, float> tup;
+	tuple<string, string, int, float> tup; // tuple<firstWord, secondWord, frequency/count, probability>
 
 	iStream >> firstWord;
-
-	while(iStream.is_open()) {
+	while(iStream) {
 		iStream >> secondWord;
-		cout << firstWord + " " + secondWord << endl;
 		bigramIter = bigramMap.find(firstWord);
 		if(bigramIter != bigramMap.end()) {
 			// checks if bigram already exists by iterating through list of tuples
-			for(listIter = bigramIter->second.begin(); get<1>(*listIter) != secondWord && listIter != bigramIter->second.end(); listIter++) { }
+			for(listIter = (bigramIter->second).begin(); listIter != (bigramIter->second).end(); listIter++) {
+				if(get<1>(*listIter) == secondWord) {
+					break;
+				}
+			}
+
 			if(listIter != bigramIter->second.end()) {
-				// second word of bigram found so incrementing frequency in appropriate tuple
+				// second word of bigram found so incrementing frequency in appropriate tuple value
 				get<2>(*listIter)++;
 			} else {
-				// TODO: FIX THIS
 				// second word of bigram not found so creating new tuple and adding to list of bigrams that start with first word in bigram
 				tup = make_tuple(firstWord, secondWord, 1, 0.0);
-				BigramList temp = new BigramList(bigramIter->second);
-				temp.push_back(tup);
-				bigramMap[firstWord] = temp;
+				bigramIter->second.push_back(tup);
 			}
 		} else {
 			// first word not found in hash table; create new list
@@ -46,24 +47,21 @@ void mapInit(string inputFile, BigramMap& bigramMap, UnigramMap& unigramMap) {
 			newList.push_back(tup);
 			bigramMap[firstWord] = newList;
 		}
+		unigramMap[firstWord]++;
 		firstWord = secondWord;
 	}
 }
 
 void printBigramMap(BigramMap bm) {
-	int count = 0;
-	cout << "wtf is going on" << endl;
-	for(BigramMap::const_iterator iter = bm.begin(); iter != bm.end(); iter++) {
-		cout << "count = " << count++;
-		for(BigramList::const_iterator iter2 = iter->second.begin(); iter2 != iter->second.end(); iter2++) {
-			cout << "test" << endl;
-			cout << get<0>(*iter2) + " " + get<1>(*iter2) << endl;
+	for(BigramMap::const_iterator bigramIter = bm.begin(); bigramIter != bm.end(); bigramIter++) {
+		for(BigramList::const_iterator listIter = bigramIter->second.begin(); listIter != bigramIter->second.end(); listIter++) {
+			cout << get<0>(*listIter) << " " << get<1>(*listIter) << " frequency = " << get<2>(*listIter) << " probability = " << get<3>(*listIter) << endl;
 		}
 	}
 }
 
 int main(int argc, char * argv[]) {
-	if(argc != 3) {
+	if(argc <= 3) {
 		cout << "USAGE: ./a.out dir/to/file.txt sentence" << endl;
 		return 1;
 	}
